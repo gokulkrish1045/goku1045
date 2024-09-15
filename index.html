@@ -690,6 +690,27 @@
         
         <!--Custom JS-->
         <script src="assets/js/custom.js"></script>
+
+		 <!-- Add JavaScript for EmailJS here -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("k_0lFHRm4-cUwwR_V"); // Replace with your EmailJS User ID
+      })();
+    </script>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        // Prepare to send form data via EmailJS
+        emailjs.sendForm('service_8jlzvqe', 'template_bq2dab7', this)
+          .then(function(response) {
+            alert('SUCCESS! Message sent.');
+          }, function(error) {
+            alert('FAILED... ' + JSON.stringify(error));
+          });
+      });
+    </script>
         
     </body>
 	
